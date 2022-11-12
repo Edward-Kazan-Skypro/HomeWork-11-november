@@ -2,9 +2,9 @@ package cars;
 
 public abstract class Car {
 
-    private String brand;
-    private String model;
-    private double engineVolume;
+    private String brand = "не указано";
+    private String model = "не указано";
+    private double engineVolume = 0;
 
     public Car(String brand, String model, double engineVolume) {
         if (checkInputString(brand)) {this.brand = brand;}

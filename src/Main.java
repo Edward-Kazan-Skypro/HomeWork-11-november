@@ -50,16 +50,15 @@ public class Main {
         System.out.println("----------------------------------------------------------------------------");
 
         //Создадим водителя с правами категории В
-        Driver driver_1 = new DriverCatB("Иванов Иван Иванович", 15);
+        Driver driver_1 = new DriverCatB("Иванов Иван Иванович", 15, passengerCar_4);
         System.out.println(driver_1);
-        //Посадим водителя на грузовик
-        driver_1.startMoving(truck_1);
-        //Вышло сообщение о несоответствии прав и типом транспортного средства
-
         //Запустим пару методов этого класса
-        driver_1.startMoving(passengerCar_1);
-        driver_1.stopMoving(passengerCar_1);
-        driver_1.refuelCar(passengerCar_1);
+        driver_1.startMoving();
+        driver_1.stopMoving();
+        driver_1.refuelCar();
+        System.out.println();
+        driver_1.message();
+
 
     }
 }
