@@ -25,12 +25,14 @@ public class PassengerCars extends Car implements race.Competing {
 
     @Override
     public void bestTime() {
-        System.out.println("Легковой автомобиль " + getBrand() + " " + getModel() + " показал лучшее время за круг.");
+        System.out.print("Легковой автомобиль " + getBrand() + " " + getModel() + " показал лучшее время за круг: ");
+        System.out.println((int) (Math.random() * 100 + 1) + " минут.");
     }
 
     @Override
     public void maxSpeed() {
-        System.out.println("Легковой автомобиль " + getBrand() + " " + getModel() + " достиг максимальной скорости.");
+        System.out.print("Легковой автомобиль " + getBrand() + " " + getModel() + " достиг максимальной скорости в ");
+        System.out.println((int) (Math.random() * 100 + 1) + " км/час.");
     }
     @Override
     public String toString() {

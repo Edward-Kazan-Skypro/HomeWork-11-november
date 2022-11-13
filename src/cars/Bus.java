@@ -25,12 +25,14 @@ public class Bus extends Car implements race.Competing {
 
     @Override
     public void bestTime() {
-        System.out.println("Автобус " + getBrand() + " " + getModel() +" показал лучшее время за круг.");
+        System.out.print("Автобус " + getBrand() + " " + getModel() +" показал лучшее время за круг: ");
+        System.out.println((int) (Math.random() * 100 + 1) + " минут.");
     }
 
     @Override
     public void maxSpeed() {
-        System.out.println("Автобус " + getBrand() + " " + getModel() +" достиг максимальной скорости.");
+        System.out.print("Автобус " + getBrand() + " " + getModel() +" достиг максимальной скорости в ");
+        System.out.println((int) (Math.random() * 100 + 1) + " км/час.");
     }
 
     @Override

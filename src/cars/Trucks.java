@@ -25,12 +25,14 @@ public class Trucks extends Car implements race.Competing {
 
     @Override
     public void bestTime() {
-        System.out.println("Грузовой автомобиль " + getBrand() + " " + getModel() + " показал лучшее время за круг.");
+        System.out.print("Грузовой автомобиль " + getBrand() + " " + getModel() + " показал лучшее время за круг: ");
+        System.out.println((int) (Math.random() * 100 + 1) + " минут.");
     }
 
     @Override
     public void maxSpeed() {
-        System.out.println("Грузовой автомобиль " + getBrand() + " " + getModel() + " достиг максимальной скорости.");
+        System.out.print("Грузовой автомобиль " + getBrand() + " " + getModel() + " достиг максимальной скорости в ");
+        System.out.println((int) (Math.random() * 100 + 1) + " км/час.");
     }
 
     @Override

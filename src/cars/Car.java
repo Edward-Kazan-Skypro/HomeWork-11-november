@@ -36,6 +36,10 @@ public abstract class Car {
         System.out.println(getBrand() + " " + getModel() + " остановился.");
     }
 
+    public int getRandomNumbers (){
+       return (int) (Math.random() * 100 + 1);
+    }
+
     @Override
     public String toString() {
         return  "марка: " + brand +

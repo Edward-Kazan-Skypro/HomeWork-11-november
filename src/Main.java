@@ -3,6 +3,7 @@ import cars.PassengerCars;
 import cars.Trucks;
 import drivers.Driver;
 import drivers.DriverCatB;
+import drivers.DriverCatD;
 
 public class Main {
     public static void main(String[] args) {
@@ -50,15 +51,23 @@ public class Main {
         System.out.println("----------------------------------------------------------------------------");
 
         //Создадим водителя с правами категории В
-        Driver driver_1 = new DriverCatB("Иванов Иван Иванович", 15, passengerCar_4);
+        Driver<PassengerCars> driver_1 = new DriverCatB("Иванов Иван Иванович", 15);
         System.out.println(driver_1);
-        //Запустим пару методов этого класса
-        driver_1.startMoving();
-        driver_1.stopMoving();
-        driver_1.refuelCar();
+        //Посадим водителя за руль всех легковых автомобилей
+        driver_1.startMoving(passengerCar_2);
+        driver_1.startMoving(passengerCar_1);
+        driver_1.startMoving(passengerCar_3);
+        driver_1.startMoving(passengerCar_4);
+        //Проверим работу методов
+        driver_1.stopMoving(passengerCar_4);
+        driver_1.refuelCar(passengerCar_4);
+        driver_1.message(passengerCar_4);
         System.out.println();
-        driver_1.message();
 
-
+        Driver<Bus> driver_2 = new DriverCatD("Петров Петр Петрович", 6);
+        System.out.println(driver_2);
+        driver_2.startMoving(bus_1);
+        driver_2.message(bus_1);
+        System.out.println("----------------------------------------------------------------------------");
     }
 }
