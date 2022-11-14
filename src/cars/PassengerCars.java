@@ -4,8 +4,6 @@ import cars.enums.BodyTypePassengersCars;
 
 public class PassengerCars extends Car implements race.Competing {
 
-    private final BodyTypePassengersCars bodyType;
-
     /*Вначале хотел указать в конструкторе текстовую переменную (String inputBodyType),
     чтобы по ее содержимому шел поиск в перечислении,
     и, если вводимое название (например, "Седан") совпадает с элементом перечисления,
@@ -16,10 +14,15 @@ public class PassengerCars extends Car implements race.Competing {
     более того, при их создании надо указывать один-два цифровых параметра,
     а не понятное название типа кузова.
     В общем, не стал нарушать единообразие и надежность создания объектов транспортных средств.*/
+    private final BodyTypePassengersCars bodyType;
 
     public PassengerCars(String brand, String model, double engineVolume, BodyTypePassengersCars inputBodyType) {
         super(brand, model, engineVolume);
         bodyType = inputBodyType;
+    }
+
+    public BodyTypePassengersCars getBodyType() {
+        return bodyType;
     }
 
     public void printBodyType() {
@@ -61,6 +64,6 @@ public class PassengerCars extends Car implements race.Competing {
 
     @Override
     public String toString() {
-        return "Легковой автомобиль - " + super.toString() + ", тип кузова:" + this.bodyType;
+        return "Легковой автомобиль - " + super.toString() + ", тип кузова:" + this.getBodyType();
     }
 }

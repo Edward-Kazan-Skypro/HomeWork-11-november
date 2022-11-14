@@ -1,5 +1,6 @@
 package cars;
 
+import cars.enums.BodyTypePassengersCars;
 import cars.enums.CapacityTrucks;
 
 public class Trucks extends Car implements race.Competing {
@@ -9,12 +10,14 @@ public class Trucks extends Car implements race.Competing {
         super(brand, model, engineVolume);
         bodyType = inputBodyType;
     }
-
+    public CapacityTrucks getBodyType() {
+        return bodyType;
+    }
     public void printBodyType() {
         if (this.bodyType == null) {
             System.out.println("Данных по авто недостаточно.");
         } else {
-            System.out.println("Грузоподъемность грузовика " + getBrand() + " " + getModel() + ":"+ this.bodyType);
+            System.out.println("Грузоподъемность грузовика " + getBrand() + " " + getModel() + ":" + getBodyType());
         }
     }
 

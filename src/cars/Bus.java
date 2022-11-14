@@ -11,11 +11,15 @@ public class Bus extends Car implements race.Competing {
         bodyType = inputBodyType;
     }
 
+    public CapacityBus getBodyType() {
+        return bodyType;
+    }
+
     public void printBodyType() {
         if (this.bodyType == null) {
             System.out.println("Данных по авто недостаточно.");
         } else {
-            System.out.println("Вместимость автобуса " + getBrand() + " " + getModel() + ":"+ this.bodyType);
+            System.out.println("Вместимость автобуса " + getBrand() + " " + getModel() + ":"+ getBodyType());
         }
     }
 

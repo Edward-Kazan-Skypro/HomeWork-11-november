@@ -17,10 +17,6 @@ public enum BodyTypePassengersCars {
         this.bodyType = bodyType;
     }
 
-    public String getBodyType() {
-        return bodyType;
-    }
-
     @Override
     public String toString() {
         return this.bodyType;
