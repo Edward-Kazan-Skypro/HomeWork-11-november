@@ -4,8 +4,6 @@ import cars.Trucks;
 import cars.enums.BodyTypePassengersCars;
 import cars.enums.CapacityBus;
 import cars.enums.CapacityTrucks;
-import drivers.Driver;
-import drivers.DriverCatB;
 
 public class Main {
     public static void main(String[] args) {
@@ -33,7 +31,6 @@ public class Main {
         //Создадим водителя с правами категории В
         //Driver<PassengerCars> driver_1 = new DriverCatB("Иванов Иван Иванович", 15);
         //System.out.println(driver_1);
-
         //System.out.println("----------------------------------------------------------------------------");
     }
 }

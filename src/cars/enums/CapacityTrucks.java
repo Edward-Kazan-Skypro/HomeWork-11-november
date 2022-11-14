@@ -4,22 +4,22 @@ public enum CapacityTrucks {
     N1(null, 3.5f),
     N2(3.5f, 12f),
     N3(12f, null);
-    private final Float capacityFrom;
-    private final Float capacityTo;
+    private final Float capacityMin;
+    private final Float capacityMax;
 
-    CapacityTrucks(Float capacityFrom, Float capacityTo) {
-        this.capacityFrom = capacityFrom;
-        this.capacityTo = capacityTo;
+    CapacityTrucks(Float capacityMin, Float capacityMax) {
+        this.capacityMin = capacityMin;
+        this.capacityMax = capacityMax;
     }
 
     @Override
     public String toString() {
         String result = "";
-        if (capacityFrom != null){
-            result += "от " + capacityFrom;
+        if (capacityMin != null){
+            result += "от " + capacityMin;
         }
-        if (capacityTo != null) {
-            result += " до " + capacityTo + " тонн";
+        if (capacityMax != null) {
+            result += " до " + capacityMax + " тонн";
         }
         return result;
     }

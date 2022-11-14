@@ -7,22 +7,22 @@ public enum CapacityBus {
     BIG(60,80),
     SPECIAL_BIG(100,120);
 
-    private final Integer capacityFrom;
-    private final Integer capacityTo;
+    private final Integer capacityMin;
+    private final Integer capacityMax;
 
-    CapacityBus(Integer capacityFrom, Integer capacityTo) {
-        this.capacityFrom = capacityFrom;
-        this.capacityTo = capacityTo;
+    CapacityBus(Integer capacityMin, Integer capacityMax) {
+        this.capacityMin = capacityMin;
+        this.capacityMax = capacityMax;
     }
 
     @Override
     public String toString() {
         String result = "";
-        if (capacityFrom != null){
-            result += "от " + capacityFrom;
+        if (capacityMin != null){
+            result += "от " + capacityMin;
         }
-        if (capacityTo != null) {
-            result += " до " + capacityTo + " мест";
+        if (capacityMax != null) {
+            result += " до " + capacityMax + " мест";
         }
         return result;
     }
