@@ -1,9 +1,22 @@
 package cars;
 
+import cars.enums.BodyTypePassengersCars;
+
 public class PassengerCars extends Car implements race.Competing {
 
-    public PassengerCars(String brand, String model, double engineVolume) {
+    BodyTypePassengersCars bodyType;
+
+    public PassengerCars(String brand, String model, double engineVolume, BodyTypePassengersCars inputBodyType) {
         super(brand, model, engineVolume);
+        bodyType = inputBodyType;
+    }
+
+    public void printBodyType() {
+        if (this.bodyType == null) {
+            System.out.println("Данных по авто недостаточно.");
+        } else {
+            System.out.println("Тип кузова легкового автомобиля " + getBrand() + " " + getModel() + ": " + this.bodyType);
+        }
     }
 
     @Override
@@ -34,8 +47,9 @@ public class PassengerCars extends Car implements race.Competing {
         System.out.print("Легковой автомобиль " + getBrand() + " " + getModel() + " достиг максимальной скорости в ");
         System.out.println((int) (Math.random() * 100 + 1) + " км/час.");
     }
+
     @Override
     public String toString() {
-        return "Легковой автомобиль - " + super.toString();
+        return "Легковой автомобиль - " + super.toString() + ", тип кузова: " + this.bodyType;
     }
 }

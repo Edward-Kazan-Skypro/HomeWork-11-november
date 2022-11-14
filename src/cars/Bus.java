@@ -1,9 +1,22 @@
 package cars;
 
+import cars.enums.CapacityBus;
+
 public class Bus extends Car implements race.Competing {
 
-    public Bus(String brand, String model, double engineVolume) {
+    CapacityBus bodyType;
+
+    public Bus(String brand, String model, double engineVolume, CapacityBus inputBodyType) {
         super(brand, model, engineVolume);
+        bodyType = inputBodyType;
+    }
+
+    public void printBodyType() {
+        if (this.bodyType == null) {
+            System.out.println("Данных по авто недостаточно.");
+        } else {
+            System.out.println("Вместимость автобуса " + getBrand() + " " + getModel() + ": "+ this.bodyType);
+        }
     }
 
     @Override
