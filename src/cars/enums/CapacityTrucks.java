@@ -1,13 +1,14 @@
 package cars.enums;
 
 public enum CapacityTrucks {
-    N1(null, 3.5f),
+    N1(0, 3.5f),
     N2(3.5f, 12f),
-    N3(12f, null);
-    private final Float capacityMin;
-    private final Float capacityMax;
+    N3(12f, 0);
 
-    CapacityTrucks(Float capacityMin, Float capacityMax) {
+    private final float capacityMin;
+    private final float capacityMax;
+
+    CapacityTrucks(float capacityMin, float capacityMax) {
         this.capacityMin = capacityMin;
         this.capacityMax = capacityMax;
     }
@@ -15,10 +16,10 @@ public enum CapacityTrucks {
     @Override
     public String toString() {
         String result = "";
-        if (capacityMin != null){
+        if (capacityMin > 0){
             result += "от " + capacityMin;
         }
-        if (capacityMax != null) {
+        if (capacityMax > 0) {
             result += " до " + capacityMax + " тонн";
         }
         return result;

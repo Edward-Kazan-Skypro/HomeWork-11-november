@@ -9,9 +9,15 @@ public class Main {
     public static void main(String[] args) {
 
         Trucks truck_1 = new Trucks("MAN", "V-123", 3.5, CapacityTrucks.N1);
-        Trucks truck_3 = new Trucks("SCANIA", "Y-55L", 6.5, CapacityTrucks.N2);
-        Trucks truck_4 = new Trucks("FAW", "TZ-5", 4.5, CapacityTrucks.N3);
-        truck_1.printBodyType();
+        Trucks truck_2 = new Trucks("SCANIA", "Y-55L", 6.5, CapacityTrucks.N2);
+        Trucks truck_3 = new Trucks("FAW", "TZ-5", 4.5, CapacityTrucks.N3);
+        Trucks truck_4 = new Trucks("Камаз", "CKC-2002", 3.8, CapacityTrucks.N1);
+        truck_4.printBodyType();
+        //System.out.println("----------------------------------------------------------------------------");
+        //отредактируем грузовик - не укажем его грузоподъемность для вывода в консоль сообщения
+        //"Данных по авто недостаточно."
+        truck_4 = new Trucks("Камаз", "CKC-2002", 3.8, null);
+        truck_4.printBodyType();
         System.out.println("----------------------------------------------------------------------------");
 
         PassengerCars passengerCar_1 = new PassengerCars("BMW", "Z8", 2.8, BodyTypePassengersCars.SEDAN);
@@ -25,7 +31,7 @@ public class Main {
         Bus bus_2 = new Bus("HIGER", "X-999", 3.1, CapacityBus.SMALL);
         Bus bus_3 = new Bus("HYUNDAI", "A-555", 3.3, CapacityBus.SPECIAL_BIG);
         Bus bus_4 = new Bus("Ikarus", "Z-5", 4.2, CapacityBus.SPECIAL_SMALL);
-        bus_4.printBodyType();
+        bus_2.printBodyType();
         System.out.println("----------------------------------------------------------------------------");
 
         //Создадим водителя с правами категории В
