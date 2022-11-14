@@ -14,7 +14,7 @@ public enum CapacityTrucks {
     }
 
     @Override
-    public String toString() {
+    public String toString () {
         String result = "";
         if (capacityMin > 0){
             result += "от " + capacityMin;

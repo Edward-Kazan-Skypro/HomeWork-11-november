@@ -44,7 +44,7 @@ public abstract class Driver <T extends Car> {
                     " остановил " + car.getBrand() + " " + car.getModel());
     }
 
-    public void refuelCar(T car) {
+    public void refuelCar (T car) {
         System.out.println("Водитель " + getFullName() +
                     " заправил автомобиль " + car.getBrand() + " " + car.getModel());
     }

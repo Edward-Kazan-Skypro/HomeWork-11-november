@@ -10,7 +10,7 @@ public class Trucks extends Car implements race.Competing {
         super(brand, model, engineVolume);
         bodyType = inputBodyType;
     }
-    public CapacityTrucks getBodyType() {
+    public CapacityTrucks getBodyType () {
         return bodyType;
     }
     public void printBodyType() {

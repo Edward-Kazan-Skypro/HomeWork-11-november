@@ -63,7 +63,7 @@ public class PassengerCars extends Car implements race.Competing {
     }
 
     @Override
-    public String toString() {
+    public String toString () {
         return "Легковой автомобиль - " + super.toString() + ", тип кузова:" + this.getBodyType();
     }
 }

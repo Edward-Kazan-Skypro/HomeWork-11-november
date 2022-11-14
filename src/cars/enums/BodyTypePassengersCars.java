@@ -18,7 +18,7 @@ public enum BodyTypePassengersCars {
     }
 
     @Override
-    public String toString() {
+    public String toString () {
         return this.bodyType;
     }
 }

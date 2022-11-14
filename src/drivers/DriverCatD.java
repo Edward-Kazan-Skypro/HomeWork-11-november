@@ -9,7 +9,7 @@ public class DriverCatD extends Driver<Bus> {
     }
 
     @Override
-    public void startMoving(Bus car) {
+    public void startMoving (Bus car) {
         super.startMoving(car);
     }
     public void stopMoving(Bus car) {

@@ -16,7 +16,7 @@ public enum CapacityBus {
     }
 
     @Override
-    public String toString() {
+    public String toString () {
         String result = "";
         if (capacityMin > 0) {
             result += "от " + capacityMin;

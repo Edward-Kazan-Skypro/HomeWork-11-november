@@ -16,7 +16,7 @@ public abstract class Car {
         return string.length() > 0 && string != null && !string.isEmpty() && !string.isBlank();
     }
 
-    public String getBrand() {
+    public String getBrand () {
         return brand;
     }
 

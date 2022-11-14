@@ -16,7 +16,7 @@ public class DriverCatB extends Driver<PassengerCars> {
         super.stopMoving(car);
     }
 
-    public void refuelCar(PassengerCars car) {
+    public void refuelCar (PassengerCars car) {
         super.refuelCar(car);
     }
 

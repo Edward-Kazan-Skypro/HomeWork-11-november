@@ -15,7 +15,7 @@ public class Bus extends Car implements race.Competing {
         return bodyType;
     }
 
-    public void printBodyType() {
+    public void printBodyType () {
         if (this.bodyType == null) {
             System.out.println("Данных по авто недостаточно.");
         } else {
