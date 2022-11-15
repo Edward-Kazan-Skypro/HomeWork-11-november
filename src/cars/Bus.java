@@ -52,6 +52,11 @@ public class Bus extends Car implements race.Competing {
         System.out.println((int) (Math.random() * 100 + 1) + " км/час.");
     }
 
+    public boolean diagnosticCar() {
+        System.out.println("Автобус " + getBrand() + " " + getModel() + " диагностику не проходит.");
+        return true;
+    }
+
     @Override
     public String toString() {
         return "Автобус - " + super.toString();

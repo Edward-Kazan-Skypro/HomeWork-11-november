@@ -21,7 +21,7 @@ public class PassengerCars extends Car implements race.Competing {
         bodyType = inputBodyType;
     }
 
-    public BodyTypePassengersCars getBodyType() {
+   public BodyTypePassengersCars getBodyType() {
         return bodyType;
     }
 
@@ -60,6 +60,10 @@ public class PassengerCars extends Car implements race.Competing {
     public void maxSpeed() {
         System.out.print("Легковой автомобиль " + getBrand() + " " + getModel() + " достиг максимальной скорости в ");
         System.out.println((int) (Math.random() * 100 + 1) + " км/час.");
+    }
+
+    public boolean diagnosticCar() {
+        return Math.random() > 0.5;
     }
 
     @Override

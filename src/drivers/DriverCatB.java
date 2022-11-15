@@ -5,7 +5,11 @@ import cars.PassengerCars;
 public class DriverCatB extends Driver<PassengerCars> {
 
     public DriverCatB(String fullName, int experience) {
-        super(fullName, "B", experience);
+        super(fullName, "B",experience);
+    }
+
+    public void setDrivingLicense(String drivingLicense) {
+        super.setDrivingLicense(drivingLicense);
     }
 
     public void startMoving(PassengerCars car) {

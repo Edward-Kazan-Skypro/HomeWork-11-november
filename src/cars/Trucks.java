@@ -1,11 +1,13 @@
 package cars;
 
-import cars.enums.BodyTypePassengersCars;
 import cars.enums.CapacityTrucks;
+
 
 public class Trucks extends Car implements race.Competing {
 
     private final CapacityTrucks bodyType;
+
+
     public Trucks(String brand, String model, double engineVolume, CapacityTrucks inputBodyType) {
         super(brand, model, engineVolume);
         bodyType = inputBodyType;
@@ -31,6 +33,11 @@ public class Trucks extends Car implements race.Competing {
     public void stop() {
         System.out.print("Грузовой автомобиль ");
         super.stop();
+    }
+
+    @Override
+    public boolean diagnosticCar() {
+        return Math.random() > 0.5;
     }
 
     @Override

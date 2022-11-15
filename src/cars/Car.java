@@ -40,6 +40,8 @@ public abstract class Car {
        return (int) (Math.random() * 100 + 1);
     }
 
+    public abstract boolean diagnosticCar();
+
     @Override
     public String toString() {
         return  "марка: " + brand +

@@ -5,19 +5,51 @@ import cars.Car;
 public abstract class Driver <T extends Car> {
 
     private String fullName;
-    private String drivingLicense;
+    private String drivingLicense = "не указано";
     private int experience;
 
-    private T car;
-
-
-    public Driver(String fullName, String drivingLicense, int experience) {
+    public Driver(String fullName, String drivingLicense, int experience) throws RuntimeException {
         if (checkInputString(fullName)) this.fullName = fullName;
-        if (drivingLicense.equals("B") || drivingLicense.equals("C") || drivingLicense.equals("D")) {
-            this.drivingLicense = drivingLicense;
-        }
-        if (experience > 0) this.experience = experience;
 
+        if (drivingLicense.equals("B") || drivingLicense.equals("C") || drivingLicense.equals("D")) {
+                this.drivingLicense = drivingLicense;
+            }
+        if (experience > 0) this.experience = experience;
+    }
+
+    //Добавил еще один конструктор,
+    //чтобы вручную добавлять тип водительских прав после создания объекта Driver.
+
+    //Тогда вообще не понятно зачем было описывать три отдельных класса под объект водитель.
+    //Получается мы даем возможность создавать водителя категории В (через класс DriverCatB),
+    //но без этих самых прав.
+    //Тогда и в методах (startMoving(), stopMoving() и т.д.) надо будет добавлять
+    //дополнительную проверку на соответствие водительских прав типу автомобиля!
+    //Но это разрушает всю простоту наличия трех специализированных классов для водителей.
+
+    public void setDrivingLicense(String drivingLicense) {
+        try {
+            if (drivingLicense != null){
+                this.drivingLicense = drivingLicense;
+                if (drivingLicense.equals("B")
+                        || drivingLicense.equals("C")
+                        || drivingLicense.equals("D")){
+                    this.drivingLicense = drivingLicense;
+                } else {
+                    //Сообщение "Несоответствующий тип прав." не будет появляться,
+                    //т.к. использована конструкция try - catch
+                    //без этой обертки работа программы прекращается.
+                    //А сообщение - подсказка (или пояснение) к типу ошибки.
+                    //Если надо, то уберу try - catch.
+                    throw new IllegalArgumentException("Несоответствующий тип прав.");
+                }
+            } else {
+
+                throw new IllegalArgumentException();
+            }
+        } catch (Exception ex) {
+            System.out.println("Необходимо указать тип прав!");
+        }
     }
 
     public String getFullName() {
