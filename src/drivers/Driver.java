@@ -8,6 +8,17 @@ public abstract class Driver <T extends Car> {
     private String drivingLicense = "не указано";
     private int experience;
 
+    private boolean freeForRace = true;
+
+    public boolean isFreeForRace() {
+        return freeForRace;
+    }
+
+    public void setFreeForRace(boolean freeForRace) {
+        this.freeForRace = freeForRace;
+    }
+
+
     public Driver(String fullName, String drivingLicense, int experience) throws RuntimeException {
         if (checkInputString(fullName)) this.fullName = fullName;
 
@@ -16,6 +27,8 @@ public abstract class Driver <T extends Car> {
             }
         if (experience > 0) this.experience = experience;
     }
+
+
 
     public void setDrivingLicense(String drivingLicense) {
         try {

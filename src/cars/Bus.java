@@ -11,6 +11,10 @@ public class Bus extends Car implements race.Competing {
         bodyType = inputBodyType;
     }
 
+    public int getMIN_LIMIT_MECHANIC() {
+        return 2;
+    }
+
     public CapacityBus getBodyType() {
         return bodyType;
     }

@@ -4,6 +4,8 @@ import cars.PassengerCars;
 
 public class DriverCatB extends Driver<PassengerCars> {
 
+
+
     public DriverCatB(String fullName, int experience) {
         super(fullName, "B",experience);
     }

@@ -7,11 +7,15 @@ public class Trucks extends Car implements race.Competing {
 
     private final CapacityTrucks bodyType;
 
-
     public Trucks(String brand, String model, double engineVolume, CapacityTrucks inputBodyType) {
         super(brand, model, engineVolume);
         bodyType = inputBodyType;
     }
+
+    public int getMIN_LIMIT_MECHANIC() {
+        return 3;
+    }
+
     public CapacityTrucks getBodyType () {
         return bodyType;
     }

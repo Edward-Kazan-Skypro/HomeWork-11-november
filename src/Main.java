@@ -2,11 +2,11 @@ import cars.Bus;
 import cars.Car;
 import cars.PassengerCars;
 import cars.Trucks;
-import cars.enums.BodyTypePassengersCars;
-import cars.enums.CapacityBus;
-import cars.enums.CapacityTrucks;
+import cars.enums.*;
 import drivers.Driver;
 import drivers.DriverCatB;
+import mechanics.Mechanic;
+import race.RaceUnit;
 
 import java.util.ArrayList;
 
@@ -62,7 +62,6 @@ public class Main {
         Driver<PassengerCars> driver_1 = new DriverCatB("Иванов Иван Иванович", 15);
         driver_1.setDrivingLicense("B");
         System.out.println(driver_1);
-        driver_1.startMoving(passengerCar_1);
 
         //Создадим неправильного водителя с правами неверного типа
         Driver<PassengerCars> driver_2 = new DriverCatB("Петров Петр Петрович", 10);
@@ -73,6 +72,43 @@ public class Main {
         //Но это раздует компактные классы DriverCatB, DriverCatC и DriverCatD
         //и, скорее всего сделает их ненужными...
         driver_2.startMoving(passengerCar_1);
+
+        //Создадим механиков
+        Mechanic mechanic_1 = new Mechanic("Первый механик универсал", Company.SMILE_HAMMER, true, true,true);
+        Mechanic mechanic_2 = new Mechanic("Второй механик - мастер по автобусам", Company.SMILE_HAMMER, false, false,true);
+        Mechanic mechanic_3 = new Mechanic("Второй механик - мастер по грузовикам", Company.SMILE_HAMMER, false, true,false);
+
+        mechanic_3.doMaintenance(bus_4);
+        mechanic_3.repairCar(bus_4);
+        mechanic_3.doMaintenance(truck_4);
+        mechanic_3.repairCar(truck_4);
+
+        System.out.println("----------------------------------------------------------------------------");
+
+        //Создадим участника гонок
+        RaceUnit raceUnit_1 = new RaceUnit(truck_4, driver_1, Sponsors.SONY);
+        //добавим этому участнику механиков
+        raceUnit_1.addMechanicToRaceUnit(mechanic_1, truck_4);
+        raceUnit_1.addMechanicToRaceUnit(mechanic_2,truck_4);//этот механик не добавится -
+        // нет нужных умений по работе с грузовиками
+
+        //добавим этому участнику спонсоров
+        raceUnit_1.addSponsorToRaceUnit(Sponsors.MARLBORO);
+        raceUnit_1.addSponsorToRaceUnit(Sponsors.SHELL);
+        raceUnit_1.addSponsorToRaceUnit(Sponsors.BILL_GATES);
+        //выведем на экран информацию по этому участнику гонок
+        System.out.println(raceUnit_1);
+
+        //Попробуем добавить этого же водителя как другого участника гонок
+        RaceUnit raceUnit_2 = new RaceUnit(truck_3, driver_1, Sponsors.MARLBORO);
+        System.out.println(raceUnit_2);
+        //Появится сообщение, что водитель уже участвует в гонках
+
+        raceUnit_1.checkRaceUnitReadyToRace();
+        System.out.println("----------------------------------------------------------------------------");
+
+        //carsProcedure.viewAllCar();
+
     }
 
     //Внутренний класс-утилита для формирования списков транспортных средств и работы со списками (массовая диагностика)
@@ -97,10 +133,16 @@ public class Main {
             busList.add(car);
         }
 
-        public void viewCarList(ArrayList<Car> list) {
-            for (Car car : list) {
+        public void viewAllCar() {
+            ArrayList<Car> allCarList = new ArrayList<>();
+            allCarList.addAll(passengerCarsList);
+            allCarList.addAll(trucksList);
+            allCarList.addAll(busList);
+
+            for (Car car : allCarList) {
                 System.out.println(car);
             }
+            System.out.println();
         }
 
         public void startCarDiagnostic(ArrayList<Car> list) {
