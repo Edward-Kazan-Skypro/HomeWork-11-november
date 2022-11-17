@@ -7,6 +7,7 @@ import drivers.Driver;
 import drivers.DriverCatB;
 import mechanics.Mechanic;
 import race.RaceUnit;
+import serviceStation.ServiceStation;
 
 import java.util.ArrayList;
 
@@ -120,15 +121,28 @@ public class Main {
 
         //Просмотр всех созданных транспортных средств
         carsProcedure.viewAllCar();
+        System.out.println("----------------------------------------------------------------------------");
+
+        //Станция техобслуживания
+        ServiceStation serviceStation_1 = new ServiceStation();
+        //Отправим все грузовики на станцию техобслуживания
+        serviceStation_1.addAllTrucksToQueue(carsProcedure.trucksList);
+        serviceStation_1.allTrucksInspection(carsProcedure.trucksList);
+        System.out.println("----------------------------------------------------------------------------");
+        //Отправим список автобусов в очередь для техобслуживания.
+        //Появится сообщение - Автобусы техосмотр не проходят!
+        serviceStation_1.addAllBusToQueue(carsProcedure.busList);
+
+
 
     }
 
     //Внутренний класс-утилита для формирования списков транспортных средств и работы со списками (массовая диагностика)
     public static class CarsProcedure {
 
-        private final ArrayList<Car> passengerCarsList = new ArrayList<>();
-        private final ArrayList<Car> trucksList = new ArrayList<>();
-        private final ArrayList<Car> busList = new ArrayList<>();
+        private final ArrayList<PassengerCars> passengerCarsList = new ArrayList<>();
+        private final ArrayList<Trucks> trucksList = new ArrayList<>();
+        private final ArrayList<Bus> busList = new ArrayList<>();
 
         public CarsProcedure() {
         }
@@ -158,7 +172,7 @@ public class Main {
         }
 
         public void startCarDiagnostic(ArrayList<Car> list) {
-            if (list != busList) {
+            if (!(list.get(0) instanceof Bus)) {
                 for (Car car : list) {
                     try {
                         if (car.diagnosticCar()) {
