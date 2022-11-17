@@ -12,8 +12,6 @@ public abstract class Car {
         if (engineVolume > 0) this.engineVolume = engineVolume;
     }
 
-    public abstract int getMIN_LIMIT_MECHANIC();
-
     public boolean checkInputString(String string) {
         return string.length() > 0 && string != null && !string.isEmpty() && !string.isBlank();
     }

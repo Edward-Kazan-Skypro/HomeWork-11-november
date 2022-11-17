@@ -11,10 +11,6 @@ public class PassengerCars extends Car implements race.Competing {
         bodyType = inputBodyType;
     }
 
-    public int getMIN_LIMIT_MECHANIC() {
-        return 1;
-    }
-
     public BodyTypePassengersCars getBodyType() {
         return bodyType;
     }

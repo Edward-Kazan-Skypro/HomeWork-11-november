@@ -8,7 +8,6 @@ import cars.enums.Sponsors;
 import drivers.Driver;
 import mechanics.Mechanic;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 //Класс для создания объекта - участник заезда (гонок)
@@ -25,11 +24,11 @@ public class RaceUnit {
     Driver driver;
     private final Sponsors sponsor;
 
-    HashSet <Sponsors> sponsorsSet = new HashSet<>();
+    HashSet<Sponsors> sponsorsSet = new HashSet<>();
 
     Mechanic mechanic;
 
-    HashSet <Mechanic> mechanicsSet = new HashSet<>();
+    HashSet<Mechanic> mechanicsSet = new HashSet<>();
 
     public RaceUnit(Car car, Driver driver, Sponsors sponsor) {
         this.sponsor = sponsor;
@@ -42,11 +41,11 @@ public class RaceUnit {
         }
     }
 
-    public void addMechanicToRaceUnit (Mechanic mechanic, Car car){
+    public void addMechanicToRaceUnit(Mechanic mechanic, Car car) {
         if (mechanic.checkCarTypeForWork(car)) mechanicsSet.add(mechanic);
     }
 
-    public void addSponsorToRaceUnit (Sponsors sponsor) {
+    public void addSponsorToRaceUnit(Sponsors sponsor) {
         sponsorsSet.add(sponsor);
     }
 
@@ -58,14 +57,20 @@ public class RaceUnit {
         return driver;
     }
 
-    public void checkRaceUnitReadyToRace (){
-        System.out.print("Участник заезда:\n" +
-                "машина: " + car.getBrand() + " " + car.getModel() +
-                ", водитель : " + driver.getFullName());
-        if (getCar().getMIN_LIMIT_MECHANIC() < mechanicsSet.size()) {
-            System.out.println(" не готов к заезду - мало механиков для обслуживания автомобиля!");
+    public void checkRaceUnitReadyToRace() {
+        System.out.print("Участник заезда:\n");
+        if (getDriver() != null && getCar() != null) {
+            System.out.print("машина: " + car.getBrand() + " " + car.getModel() +
+                    ", водитель : " + driver.getFullName());
+            if ((car instanceof Bus && (mechanicsSet.size() < 2))
+                    || (car instanceof Trucks && (mechanicsSet.size() < 3))
+                    || (car instanceof PassengerCars && (mechanicsSet.size() < 1))) {
+                System.out.println(" не готов к гонкам - мало механиков для обслуживания автомобиля!");
+            } else {
+                System.out.println(" - готов к гонкам!");
+            }
         } else {
-           System.out.println(" готов к гонкам!");
+            System.out.println(" - не готов к гонкам");
         }
     }
 

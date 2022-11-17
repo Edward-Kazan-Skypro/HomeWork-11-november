@@ -26,7 +26,7 @@ public class Main {
         carsProcedure.addCarToTrucksList(truck_3);
         carsProcedure.addCarToTrucksList(truck_4);
         //Диагностика грузовиков
-        carsProcedure.startCarDiagnostic(carsProcedure.trucksList);
+        //carsProcedure.startCarDiagnostic(carsProcedure.trucksList);
 
         System.out.println("----------------------------------------------------------------------------");
 
@@ -40,7 +40,7 @@ public class Main {
         carsProcedure.addCarToPassengerCarsList(passengerCar_3);
         carsProcedure.addCarToPassengerCarsList(passengerCar_4);
         //Диагностика легковых автомобилей
-        carsProcedure.startCarDiagnostic(carsProcedure.passengerCarsList);
+        //carsProcedure.startCarDiagnostic(carsProcedure.passengerCarsList);
 
         System.out.println("----------------------------------------------------------------------------");
 
@@ -54,7 +54,7 @@ public class Main {
         carsProcedure.addCarToBusList(bus_3);
         carsProcedure.addCarToBusList(bus_4);
         //Диагностика автобусов
-        carsProcedure.startCarDiagnostic(carsProcedure.busList);
+        //carsProcedure.startCarDiagnostic(carsProcedure.busList);
 
         System.out.println("----------------------------------------------------------------------------");
 
@@ -86,7 +86,7 @@ public class Main {
         System.out.println("----------------------------------------------------------------------------");
 
         //Создадим участника гонок
-        RaceUnit raceUnit_1 = new RaceUnit(truck_4, driver_1, Sponsors.SONY);
+        RaceUnit raceUnit_1 = new RaceUnit(passengerCar_1, driver_1, Sponsors.SONY);
         //добавим этому участнику механиков
         raceUnit_1.addMechanicToRaceUnit(mechanic_1, truck_4);
         raceUnit_1.addMechanicToRaceUnit(mechanic_2,truck_4);//этот механик не добавится -
@@ -98,16 +98,28 @@ public class Main {
         raceUnit_1.addSponsorToRaceUnit(Sponsors.BILL_GATES);
         //выведем на экран информацию по этому участнику гонок
         System.out.println(raceUnit_1);
+        System.out.println("----------------------------------------------------------------------------");
 
         //Попробуем добавить этого же водителя как другого участника гонок
         RaceUnit raceUnit_2 = new RaceUnit(truck_3, driver_1, Sponsors.MARLBORO);
         System.out.println(raceUnit_2);
         //Появится сообщение, что водитель уже участвует в гонках
-
+        System.out.println("----------------------------------------------------------------------------");
+        //Проверим готов ли участник к заезду?
+        //В методе проверяется требуемое количество механиков и типа автомобиля:
+        //грузовик - минимум 3 механика
+        //автобус - минимум 2 механика
+        //легковой автомобиль - минимум 1 механик
+        //Все механики перед добавлением в команду к участнику гонок проверяются на соответствующие умения.
         raceUnit_1.checkRaceUnitReadyToRace();
+        raceUnit_2.checkRaceUnitReadyToRace();
+        System.out.println("----------------------------------------------------------------------------");
+        //Просмотр водителя авто, какие спонсоры и механики у нее есть
+        System.out.println(raceUnit_1);
         System.out.println("----------------------------------------------------------------------------");
 
-        //carsProcedure.viewAllCar();
+        //Просмотр всех созданных транспортных средств
+        carsProcedure.viewAllCar();
 
     }
 
