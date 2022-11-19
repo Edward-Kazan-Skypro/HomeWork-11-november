@@ -4,10 +4,9 @@ import cars.Bus;
 import cars.Car;
 import cars.PassengerCars;
 import cars.Trucks;
-
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Set;
 
 public class ServiceStation {
 
@@ -15,11 +14,6 @@ public class ServiceStation {
     }
 
     Queue<Car> serviceQueue = new LinkedList<>();
-
-    Trucks trucks;
-    PassengerCars passengerCars;
-    Bus bus;
-
 
     public void addTrucksToQueue (Trucks trucks){
         serviceQueue.offer(trucks);
@@ -30,16 +24,16 @@ public class ServiceStation {
         serviceQueue.offer(passengerCars);
     }
 
-    public void addAllTrucksToQueue (ArrayList<Trucks> trucksList){
+    public void addAllTrucksToQueue (Set<Trucks> trucksList){
         serviceQueue.addAll(trucksList);
     }
 
-    public void addAllPassengerCarsToQueue (ArrayList<PassengerCars> passengerCarsList){
+    public void addAllPassengerCarsToQueue (Set<PassengerCars> passengerCarsList){
         serviceQueue.addAll(passengerCarsList);
     }
 
 
-    public void addAllBusToQueue (ArrayList<Bus> busList){
+    public void addAllBusToQueue (Set<Bus> busList){
         System.out.println("Автобусы техосмотр не проходят!");
     }
 
@@ -59,7 +53,7 @@ public class ServiceStation {
         }
     }
 
-    public void allTrucksInspection (ArrayList<Trucks> trucksList){
+    public void allTrucksInspection (Set<Trucks> trucksList){
         if (!serviceQueue.isEmpty()){
             for (Car car: trucksList) {
                 oneVehicleInspection(car);
@@ -69,7 +63,7 @@ public class ServiceStation {
         }
     }
 
-    public void allPassengerCarsInspection (ArrayList<PassengerCars> passengerCars){
+    public void allPassengerCarsInspection (Set<PassengerCars> passengerCars){
         if (!serviceQueue.isEmpty()){
             for (Car car: passengerCars) {
                 oneVehicleInspection(car);

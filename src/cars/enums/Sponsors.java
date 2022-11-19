@@ -1,8 +1,6 @@
 package cars.enums;
 
 import race.RaceUnit;
-
-import java.util.ArrayList;
 import java.util.HashSet;
 
 public enum Sponsors {
@@ -15,14 +13,14 @@ public enum Sponsors {
     private final String sponsorName;
     private final int donation;
 
-    private final HashSet <Sponsors> sponsorsSet = new HashSet<>();
+    private static final HashSet <Sponsors> sponsorsSet = new HashSet<>();
 
     Sponsors(String sponsorName, int donation) {
         this.sponsorName = sponsorName;
         this.donation = donation;
     }
 
-    public void addToSponsorsSet(Sponsors sponsor) {
+    public static void addToSponsorsSet(Sponsors sponsor) {
         sponsorsSet.add(sponsor);
     }
 
@@ -36,6 +34,12 @@ public enum Sponsors {
 
     public int getDonation() {
         return donation;
+    }
+
+    public static void viewAllSponsors(){
+        for (Sponsors s: sponsorsSet) {
+            System.out.println(s);
+        }
     }
 
     public void donationRace (RaceUnit raceUnit){

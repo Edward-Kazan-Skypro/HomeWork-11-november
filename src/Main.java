@@ -10,6 +10,8 @@ import race.RaceUnit;
 import serviceStation.ServiceStation;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class Main {
@@ -75,9 +77,9 @@ public class Main {
         driver_2.startMoving(passengerCar_1);
 
         //Создадим механиков
-        Mechanic mechanic_1 = new Mechanic("Первый механик универсал", Company.SMILE_HAMMER, true, true,true);
-        Mechanic mechanic_2 = new Mechanic("Второй механик - мастер по автобусам", Company.SMILE_HAMMER, false, false,true);
-        Mechanic mechanic_3 = new Mechanic("Второй механик - мастер по грузовикам", Company.SMILE_HAMMER, false, true,false);
+        Mechanic mechanic_1 = new Mechanic("Первый механик универсал", Company.SMILE_HAMMER, true, true, true);
+        Mechanic mechanic_2 = new Mechanic("Второй механик - мастер по автобусам", Company.SMILE_HAMMER, false, false, true);
+        Mechanic mechanic_3 = new Mechanic("Второй механик - мастер по грузовикам", Company.SMILE_HAMMER, false, true, false);
 
         mechanic_3.doMaintenance(bus_4);
         mechanic_3.repairCar(bus_4);
@@ -90,7 +92,7 @@ public class Main {
         RaceUnit raceUnit_1 = new RaceUnit(passengerCar_1, driver_1, Sponsors.SONY);
         //добавим этому участнику механиков
         raceUnit_1.addMechanicToRaceUnit(mechanic_1, truck_4);
-        raceUnit_1.addMechanicToRaceUnit(mechanic_2,truck_4);//этот механик не добавится -
+        raceUnit_1.addMechanicToRaceUnit(mechanic_2, truck_4);//этот механик не добавится -
         // нет нужных умений по работе с грузовиками
 
         //добавим этому участнику спонсоров
@@ -126,44 +128,85 @@ public class Main {
         //Станция техобслуживания
         ServiceStation serviceStation_1 = new ServiceStation();
         //Отправим все грузовики на станцию техобслуживания
-        serviceStation_1.addAllTrucksToQueue(carsProcedure.trucksList);
-        serviceStation_1.allTrucksInspection(carsProcedure.trucksList);
+        serviceStation_1.addAllTrucksToQueue(carsProcedure.trucksSet);
+        serviceStation_1.allTrucksInspection(carsProcedure.trucksSet);
         System.out.println("----------------------------------------------------------------------------");
         //Отправим список автобусов в очередь для техобслуживания.
         //Появится сообщение - Автобусы техосмотр не проходят!
-        serviceStation_1.addAllBusToQueue(carsProcedure.busList);
-
-
-
+        serviceStation_1.addAllBusToQueue(carsProcedure.busSet);
+        System.out.println("----------------------------------------------------------------------------");
+        //Добавим спонсоров в список и посмотрим его
+        Sponsors.addToSponsorsSet(Sponsors.MARLBORO);
+        Sponsors.addToSponsorsSet(Sponsors.SHELL);
+        Sponsors.addToSponsorsSet(Sponsors.SONY);
+        Sponsors.addToSponsorsSet(Sponsors.SONY);
+        Sponsors.viewAllSponsors();
+        System.out.println("----------------------------------------------------------------------------");
+        //Добавим автомобили в список и посмотрим его
+        //Очистим список автобусов перед добавлением новых автобусов
+        carsProcedure.getBusSet().clear();
+        carsProcedure.addCarToBusList(bus_1);
+        carsProcedure.addCarToBusList(bus_2);
+        carsProcedure.addCarToBusList(bus_3);
+        carsProcedure.addCarToBusList(bus_4);
+        //Еще раз добавим bus_4 в список
+        carsProcedure.addCarToBusList(bus_4);
+        //Посмотрим список автобусов
+        System.out.println(carsProcedure.getBusSet());
+        System.out.println("----------------------------------------------------------------------------");
+        //Создадим список механиков
+        Mechanic.addMechanicToSet(mechanic_1);
+        Mechanic.addMechanicToSet(mechanic_2);
+        Mechanic.addMechanicToSet(mechanic_3);
+        Mechanic.addMechanicToSet(mechanic_3);
+        Mechanic.viewAllMechanics();
+        System.out.println("----------------------------------------------------------------------------");
+        //Создадим список водителей и посмотрим его
+        Driver.addToDriversSet(driver_1);
+        Driver.addToDriversSet(driver_2);
+        Driver.addToDriversSet(driver_2);
+        Driver.viewAllDrivers();
     }
 
     //Внутренний класс-утилита для формирования списков транспортных средств и работы со списками (массовая диагностика)
     public static class CarsProcedure {
 
-        private final ArrayList<PassengerCars> passengerCarsList = new ArrayList<>();
-        private final ArrayList<Trucks> trucksList = new ArrayList<>();
-        private final ArrayList<Bus> busList = new ArrayList<>();
+        private final Set<PassengerCars> passengerCarsSet = new HashSet<>();
+        private final Set<Trucks> trucksSet = new HashSet<>();
+        private final Set<Bus> busSet = new HashSet<>();
 
         public CarsProcedure() {
         }
 
         public void addCarToPassengerCarsList(PassengerCars car) {
-            passengerCarsList.add(car);
+            passengerCarsSet.add(car);
         }
 
         public void addCarToTrucksList(Trucks car) {
-            trucksList.add(car);
+            trucksSet.add(car);
         }
 
         public void addCarToBusList(Bus car) {
-            busList.add(car);
+            busSet.add(car);
+        }
+
+        public Set<PassengerCars> getPassengerCarsSet() {
+            return passengerCarsSet;
+        }
+
+        public Set<Trucks> getTrucksSet() {
+            return trucksSet;
+        }
+
+        public Set<Bus> getBusSet() {
+            return busSet;
         }
 
         public void viewAllCar() {
             ArrayList<Car> allCarList = new ArrayList<>();
-            allCarList.addAll(passengerCarsList);
-            allCarList.addAll(trucksList);
-            allCarList.addAll(busList);
+            allCarList.addAll(passengerCarsSet);
+            allCarList.addAll(trucksSet);
+            allCarList.addAll(busSet);
 
             for (Car car : allCarList) {
                 System.out.println(car);

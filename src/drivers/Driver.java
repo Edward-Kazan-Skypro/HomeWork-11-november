@@ -1,6 +1,7 @@
 package drivers;
 
 import cars.Car;
+import java.util.HashSet;
 
 public abstract class Driver <T extends Car> {
 
@@ -10,6 +11,21 @@ public abstract class Driver <T extends Car> {
 
     private boolean freeForRace = true;
 
+    private static final HashSet<Driver> driversSet = new HashSet<>();
+
+    public HashSet<Driver> getDriversSet() {
+        return driversSet;
+    }
+    public static void addToDriversSet(Driver driver) {
+        driversSet.add(driver);
+    }
+
+    public static void viewAllDrivers(){
+        for (Driver d: driversSet) {
+            System.out.println(d);
+        }
+    }
+
     public boolean isFreeForRace() {
         return freeForRace;
     }
@@ -17,7 +33,6 @@ public abstract class Driver <T extends Car> {
     public void setFreeForRace(boolean freeForRace) {
         this.freeForRace = freeForRace;
     }
-
 
     public Driver(String fullName, String drivingLicense, int experience) throws RuntimeException {
         if (checkInputString(fullName)) this.fullName = fullName;

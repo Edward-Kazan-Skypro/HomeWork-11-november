@@ -5,6 +5,7 @@ import cars.Car;
 import cars.PassengerCars;
 import cars.Trucks;
 import cars.enums.Company;
+import java.util.HashSet;
 
 public class Mechanic {
 
@@ -14,6 +15,8 @@ public class Mechanic {
     private boolean workWithTrucks = false;
     private boolean workWithBus = false;
 
+    private static final HashSet<Mechanic> mechanicsSet = new HashSet<>();
+
 
     public Mechanic(String fullName, Company company, boolean workWithPassengersCars, boolean workWithTrucks, boolean workWithBus) {
         this.fullName = fullName;
@@ -21,6 +24,20 @@ public class Mechanic {
         this.workWithPassengersCars = workWithPassengersCars;
         this.workWithTrucks = workWithTrucks;
         this.workWithBus = workWithBus;
+    }
+
+    public static void addMechanicToSet(Mechanic mechanic) {
+        mechanicsSet.add(mechanic);
+    }
+
+    public static HashSet<Mechanic> getMechanicSet() {
+        return mechanicsSet;
+    }
+
+    public static void viewAllMechanics(){
+        for (Mechanic m: mechanicsSet) {
+            System.out.println(m);
+        }
     }
 
     public void doMaintenance(Car car) {
